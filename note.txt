@@ -1,0 +1,36 @@
+D:\B\javascript\Building Web Applications with Node JS and Express4
+=============================================
+1. Getting Started
+=============================================
+01 Introduction and Installation.mp4
+Things to cover:
+- Node (from scratch)
+- NPM, Gulp
+- Express 4
+
+02 Node and the Command Line.mp4
+- run node directly in cmd
+- node app.js
+
+03 Sublime Text.mp4
+04 Webstorm.mp4
+05 Other Editors.mp4
+06 Configuring Brackets.mp4
+07 Node Package Manager.mp4
+08 Versioning Packages.mp4
+09 Summary.mp4
+=============================================
+2. Setting Up Express
+=============================================
+3. Setting Up Gulp
+=============================================
+4. Templating Engines
+=============================================
+5. Routing
+=============================================
+6. Databases
+=============================================
+7. Authentication
+=============================================
+8. Structure and 3rd Party APIs
+=============================================

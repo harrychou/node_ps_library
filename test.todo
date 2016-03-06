@@ -1,0 +1,12 @@
+BUG - config ui obfuscated data become apparent after save:
+  ☐ make sure the data is hidden ...
+BUG - config ui obfucated/encrypted data becaome ******** after save:
+  ☐ make sure the API receives the correct data
+  ☐ make sure the data is saved without obfuscation function being called
+
+  ctrl-enter: add a new todo item below the current
+  ctrl-shift-enter: add a new todo item above the current
+  ctrl-d: toggle completion of the task
+  ctrl-shift-a: move all completed tasks to the archive section
+  alt-c: cancel the selected tasks
+  ctrl-shift-s: add/update timestamp for current task
