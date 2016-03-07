@@ -22,6 +22,9 @@ Things to cover:
 =============================================
 2. Setting Up Express
 =============================================
+download template
+setup template
+=============================================
 3. Setting Up Gulp
 =============================================
 4. Templating Engines
