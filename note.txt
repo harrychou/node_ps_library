@@ -39,7 +39,8 @@ Things to cover:
 05-Bootstrap Templates.mp4
   manual download and stuff
 06-Static Files.mp4
-  put in the 'public' folder
+  put static template css/js files in the 'public' folder
+	put index.html in /src/views/ folder
   express.use // inject middleware
   express.use(express.static('public'));
   express.use(express.static('src/views'));
@@ -52,13 +53,81 @@ Things to cover:
 =============================================
 3. Setting Up Gulp
 =============================================
+01 Introduction.mp4
+	goals for gulp (tasks to automate):
+	- task automation: watch file change, restart if needed
+	- task automation: inject code
+	- task automation: run
+02 What Is Gulp_.mp4
+	package based
+	installed with npm
+	gulpfile.js
+03 Coding Standards with JSHint and JSCS.mp4
+	setup editor for JSHint and JSCS
+	download .jshintrc and .jscsrc files from https://github.com/jonathanfmills/CodingStandards
+	I changed the indention to 2
+04 JSCS in Gulp.mp4
+05 Setting up Wiredep.mp4
+06 Fixing Bootstrap and Wiredep.mp4
+07 Setting up Gulp-inject.mp4
+08 Working with Nodemon.mp4
+09 Summary.mp4
+=============================================
 4. Templating Engines
+=============================================
+01 Introduction.mp4
+02 Jade.mp4
+03 Jade and JavaScript.mp4
+04 Handlebars.mp4
+05 EJS.mp4
+06 Summary.mp4
 =============================================
 5. Routing
 =============================================
+01 Introduction.mp4
+02 Navigation.mp4
+03 Routing.mp4
+04 Rendering.mp4
+05 Separate Files.mp4
+06 Single Book Route.mp4
+07 Rendering a Single Book.mp4
+08 Router Functions.mp4
+09 Summary.mp4
+=============================================
 6. Databases
+=============================================
+01 Introduction.mp4
+02 MS Sql.mp4
+03 Prepared Statements.mp4
+04 Middleware.mp4
+05 MongoDB.mp4
+06 Admin Routes.mp4
+07 Adding Books.mp4
+08 Testing Insert.mp4
+09 Select Many.mp4
+10 Select One.mp4
+11 Summary.mp4
 =============================================
 7. Authentication
 =============================================
+01 Introduction.mp4
+02 Sign in Form.mp4
+03 Creating the Auth Routes.mp4
+04 Passport Middleware.mp4
+05 Local Strategy.mp4
+06 Saving the User.mp4
+07 User Sign In.mp4
+08 Verifying the User in the Database.mp4
+09 Securing Routes.mp4
+10 Securing Multiple Routes.mp4
+11 Summary.mp4
+=============================================
 8. Structure and 3rd Party APIs
 =============================================
+01 Introduction.mp4
+02 Controllers.mp4
+03 Goodreads API.mp4
+04 Services.mp4
+05 HTTP.mp4
+06 Adding the Id.mp4
+07 Summary.mp4
