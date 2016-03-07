@@ -18,12 +18,37 @@ Things to cover:
 06 Configuring Brackets.mp4
 07 Node Package Manager.mp4
 08 Versioning Packages.mp4
+- versioning scheme
+	- 4.13.3 (exact version)
+	- ~4.13.3 (minor version, 4.13.*)
+  - ^4.13.3 (major verison, 4.*.*)
 09 Summary.mp4
 =============================================
 2. Setting Up Express
 =============================================
-download template
-setup template
+01-Introduction.mp4
+02-Our First App.mp4
+03-NPM Start.mp4
+  use npm to run script
+  node app.js
+04-Simple Routing.mp4
+  npm install express --save
+  app.listen(port, function (err) { ... }); // to run the app
+  express.get // for routing
+  express.get('/', function (req, res) { ... });
+05-Bootstrap Templates.mp4
+  manual download and stuff
+06-Static Files.mp4
+  put in the 'public' folder
+  express.use // inject middleware
+  express.use(express.static('public'));
+  express.use(express.static('src/views'));
+07-Bower.mp4
+  use bower to install front-end js/css dependencies
+  npm install bower -g
+  bower init
+  bower install --save xxxx
+08-Summary.mp4
 =============================================
 3. Setting Up Gulp
 =============================================
