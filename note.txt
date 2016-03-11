@@ -67,36 +67,186 @@ Things to cover:
 	download .jshintrc and .jscsrc files from https://github.com/jonathanfmills/CodingStandards
 	I changed the indention to 2
 04 JSCS in Gulp.mp4
+	gulp need to be global and local
+		npm install gulp -g
+		npm install gulp --save-dev  (dev only)
+	gulpfile.js
+		// simplest gulp file
+		var gulp = require('gulp');
+		gulp.task('default', function() {
+			console.log('gulp running');
+		});
+	need to install gulp components locally --save-dev (gulp-jshint, gulp-jscs, jshint-stylis, jshint (reporter for jshint))
+	need to write code
+		var gulp = require('gulp');
+		var jshint = require('gulp-jshint');
+		var jscs = require('gulp-jscs');
+
+		// all js files in the root directory, and in src folder
+		var jsFiles = ['*.js', 'src/**/*.js'];
+
+		gulp.task('style', function() {
+			return gulp.src(jsFiles)
+				.pipe(jshint())
+				.pipe(jshint.reporter('jshint-stylish', {verbose: true}))
+				.pipe(jscs())
+				.pipe(jscs.reporter());
+		});
+	run a gulp task
+		gulp style
 05 Setting up Wiredep.mp4
+	wiredep (npm install --save-dev wiredep)
+		- allows build/inject bower component dependencies
+		- recognize the dependencies of bower components
+		- inject js and css files for us
+			gulp.task('inject', function() {
+				var wiredep = require('wiredep').stream;
+				var options = {
+					bowerJson: require('./bower.json'),
+					directory: './public/lib',
+					ignorePath: '../../public'
+				};
+				return gulp.src('./src/views/*.html')
+					.pipe(wiredep(options))
+					.pipe(gulp.dest('./src/views'));
+			});
+		- in index.html file
+			<!-- bower:js -->
+			<!-- endbower -->
+			<!-- bower:css -->
+			<!-- endbower -->
+		- interesting problem with css not properly injected
 06 Fixing Bootstrap and Wiredep.mp4
 07 Setting up Gulp-inject.mp4
+	inject local dependencies (css, js)
+		- npm install --save-dev gulp-inject
+		- similar to wiredep (for bower stuff)
+		- gulpfile
+			var inject = require('gulp-inject');
+			var injectSource = gulp.src(['./public/css/*.css', './public/js/*.js']);
+			var injectOptions = {ignorePath: '/public'};
+
+			return gulp.src('./src/views/*.html')
+				.pipe(wiredep(wireDepOptions))
+				.pipe(inject(injectSource, injectOptions))
+				.pipe(gulp.dest('./src/views'));
+		- in index.html
+			<!-- inject:css -->
+			<!-- endinject -->
+			<!-- inject:js -->
+			<!-- endinject -->
 08 Working with Nodemon.mp4
+	nodemon
+		- npm install --save-dev gulp-nodemon
+		- code
+			gulp.task('serve', ['style', 'inject'], function() {
+				var options = {
+					script: 'app.js',
+					delayTime: 1,
+					env: {
+						'PORT': 7000
+					},
+					watch: jsFiles
+				};
+
+				return nodemon(options)
+					.on('restart', function(en) {
+						console.log(' .... restarting .... ');
+					});
+			});
 09 Summary.mp4
 =============================================
 4. Templating Engines
 =============================================
 01 Introduction.mp4
+	view template engines
+	- jade
+	- handlebar
+	- ejs (will use this one)
 02 Jade.mp4
+	- npm install --save jade
+		not --save-dev, this is run-time component
+	- wire up jade as view engine
+		app.set('views', './src/views');
+		app.set('view engine', 'jade');
+	- create index.jade in /scr/views
+		html
+			head
+				title My App
+			body(class=["MyClass", "AnotherClass"])
+				h1 Title stuff here
+				p
+					h3 Hello world, Harry
 03 Jade and JavaScript.mp4
+	- use (attr=...) to insert attributes
+	- use code to generate a listen
+	- inject list to view from app.js
+	- allow gulp to inject css/js reference into jade view
+		(need to change inject to handle .jade files)
+		this will inject to jade files the correct reference such as
+		link(rel='stylesheet', href='/lib/bootstrap/dist/css/bootstrap.css')
 04 Handlebars.mp4
+	- html with {{}}
+	- npm install --save express-handlebars
+	- change app.js to configure handlebars
+	- ...
 05 EJS.mp4
+	- npm install --save ejs
+	- use <%=   %> for rendering, and <%   %> for javascript code
+	- configure app.js, similar to jade
+	- .ejs code
+		<body>
+	    <%= title %>
+	    <ul>
+	      <% list.forEach(function(item) { %>
+	        <li><%= item %> Ha</li>
+	      <% }); %>
+	    </ul>
+	  </body>
 06 Summary.mp4
 =============================================
 5. Routing
 =============================================
 01 Introduction.mp4
 02 Navigation.mp4
+	- create an array of nav links
 03 Routing.mp4
+	- up to now, we have only simple routes
+		express.get('/', ....)
+	- build router for more complex routes
+		- create the router
+		- build sub-routing under the rounter
+		- use the rounter
+	- code example
+		var booksRouter = express.Router();
+		booksRouter.route('/')
+			.get(function(req, res) {
+				res.send('Ah ha - a list of books');
+			});
+		booksRouter.route('/single')
+			.get(function(req, res) {
+				res.send('Ah ha - single book');
+			});
+		app.use('/books', booksRouter);
 04 Rendering.mp4
 05 Separate Files.mp4
+	- put route into it's own js file
+	- create /src/routes folder
+	- create booksRoute.js file
+	- pull stuff out
+	- reference the routes using require('./src/routes/bookRoute')
 06 Single Book Route.mp4
+	- route('/:id')
+	- req.params.id
 07 Rendering a Single Book.mp4
 08 Router Functions.mp4
+	- instead of exports a route, we exports an function that takes in nav as parameter
 09 Summary.mp4
 =============================================
 6. Databases
 =============================================
 01 Introduction.mp4
+	- how to get books out of the page/route and from database
 02 MS Sql.mp4
 03 Prepared Statements.mp4
 04 Middleware.mp4
